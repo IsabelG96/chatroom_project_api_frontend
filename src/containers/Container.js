@@ -35,29 +35,27 @@ const Container = () => {
 
 
 
-    const postMessage = async (newMessage, chatroomID) => {
+    const postMessage = async (newMessage) => {
         // send to db
         const response = await fetch(`${SERVER_URL}/messages`, {
             method: "POST",
             headers: {"Content-type" : "application/json"},
             body : JSON.stringify(newMessage)
         })
-
         // send to client-side
         const savedMessage = await response.json();
         setMessageHistory([...messageHistory, savedMessage]);
         
     };
 
-    const getChatroomById = async(chatroomID) => {
-        // send to db
-        const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomID}`);
-        const jsonData = await response.json();
-        setChatroom(jsonData);
-        // send to cli
-    }
+    // const getChatroomById = async(chatroomID) => {
+    //     // send to db
+    //     const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomID}`);
+    //     const jsonData = await response.json();
+    //     setChatroom(jsonData);
+    //     // send to cli
+    // }
     
-
 
    
 
@@ -79,7 +77,7 @@ const Container = () => {
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Chat_icon_new_message.svg/1200px-Chat_icon_new_message.svg.png" style={{width:"100px"}}/>
                 <User/>
             </div>
-            <Chatroom messageHistory={messageHistory} message={message}/>
+            <Chatroom chatroom={chatroom} messageHistory={messageHistory} message={message} postMessage={postMessage}/>
             <div className="chatroomList_container">
             <ChatroomList chatroom={chatroom} chatroomList={chatroomList}/>
             </div>
