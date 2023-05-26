@@ -1,7 +1,10 @@
 const SendMessage = () => {
     return ( 
         <>
-            SendMessage
+            <form>
+                <input type="text" name="message" placeholder="type your message here"/>
+                <button type="submit">Send</button>
+            </form>
         </>
      );
 }

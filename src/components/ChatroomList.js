@@ -7,7 +7,7 @@ const ChatroomList = ({ chatroom, chatroomList}) => {
 
     return ( 
         <div>
-            ChatroomList
+            <h2>ChatroomList</h2>
             {list}
         </div>
      );
