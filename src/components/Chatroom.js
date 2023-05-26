@@ -1,17 +1,17 @@
 import ChatHistory from "./childcomponents/ChatHistory";
 import SendMessage from "./childcomponents/SendMessage";
 
-const Chatroom = () => {
+const Chatroom = ({messageHistory, message}) => {
     return ( 
         <>
             <div className="chatroom_title">
                 <h2>Chatroom Name</h2>
             </div>
             <div className="chatroom_container">
-                <ChatHistory/>
+                <ChatHistory messageHistory={messageHistory}/>
             </div>
             <div className="send_message">
-                <SendMessage/>
+                <SendMessage message={message}/>
             </div>
         </>
         

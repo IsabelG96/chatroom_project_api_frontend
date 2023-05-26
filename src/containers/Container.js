@@ -13,7 +13,7 @@ const Container = () => {
     const [user, setUser] = useState({});
     const [userList, setUserList] = useState([]);
 
-    const [message, setMessage] = useState({});
+    const [message, setMessage] = useState("");
     const [messageHistory, setMessageHistory] = useState([]);
 
     const fetchChatroomList = async() => {
@@ -33,13 +33,43 @@ const Container = () => {
         setMessageHistory(jsonData);
     }
 
+
+
+    const postMessage = async (newMessage, chatroomID) => {
+        // send to db
+        const response = await fetch(`${SERVER_URL}/messages`, {
+            method: "POST",
+            headers: {"Content-type" : "application/json"},
+            body : JSON.stringify(newMessage)
+        })
+
+        // send to client-side
+        const savedMessage = await response.json();
+        setMessageHistory([...messageHistory, savedMessage]);
+        
+    };
+
+    const getChatroomById = async(chatroomID) => {
+        // send to db
+        const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomID}`);
+        const jsonData = await response.json();
+        setChatroom(jsonData);
+        // send to cli
+    }
+    
+
+
+   
+
     useEffect(() => {
         fetchChatroomList();
         fetchUserList();
         fetchMessageHistory();
+
         // console.log(userList);
         // console.log(chatroomList);
-    }, [])
+    },[])
+
 
 
     
@@ -49,7 +79,7 @@ const Container = () => {
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Chat_icon_new_message.svg/1200px-Chat_icon_new_message.svg.png" style={{width:"100px"}}/>
                 <User/>
             </div>
-            <Chatroom/>
+            <Chatroom messageHistory={messageHistory} message={message}/>
             <div className="chatroomList_container">
             <ChatroomList chatroom={chatroom} chatroomList={chatroomList}/>
             </div>
