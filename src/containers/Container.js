@@ -27,12 +27,22 @@ const Container = () => {
         setUserList(jsonData);
     };
 
+    const fetchMessageHistory = async() => {
+        const response = await fetch(`${SERVER_URL}/messages/1`);
+        const jsonData = await response.json();
+        setMessageHistory(jsonData);
+    }
+
     useEffect(() => {
         fetchChatroomList();
         fetchUserList();
+        fetchMessageHistory();
         // console.log(userList);
         // console.log(chatroomList);
     }, [])
+
+
+    
 
     return ( 
         <div className="mainContainer">
