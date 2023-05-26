@@ -43,15 +43,16 @@ const Container = () => {
 
 
     
-
     return ( 
         <div className="mainContainer">
-            <div>
+            <div className="user_and_logo">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Chat_icon_new_message.svg/1200px-Chat_icon_new_message.svg.png" style={{width:"100px"}}/>
                 <User/>
             </div>
             <Chatroom/>
+            <div className="chatroomList_container">
             <ChatroomList chatroom={chatroom} chatroomList={chatroomList}/>
+            </div>
         </div>
 
      );

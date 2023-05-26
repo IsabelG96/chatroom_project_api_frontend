@@ -1,12 +1,44 @@
+.user_and_logo{
+  grid-area: a;
+  display: flex;
+  justify-content: space-around;
+}
+.chatroom_title{
+  grid-area: b;
+}
+.chatroomList_container{
+  grid-area: c;
+}
+.chatroom_container{
+  grid-area: e;
+}
+.send_message{
+  grid-area: d;
+}
+
+
 .mainContainer{
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template:
+    "a b" 1fr
+    "c e" 5fr
+    "c d" 1fr / 1fr 4fr;
+
 }
 
 div{
   padding: 5px;
   border: 2px solid darkblue;
 }
+
+/* .chatroomColumn{
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+} */
+
+
+
+
 
 /* .App {
   text-align: center;
