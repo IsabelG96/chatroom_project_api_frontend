@@ -1,10 +1,14 @@
 import ChatroomListItem from "./childcomponents/ChatroomListItem";
 
-const ChatroomList = () => {
+const ChatroomList = ({ chatroom, chatroomList}) => {
+    
+    const list = chatroomList.map((chatroom) => <ChatroomListItem 
+    chatroom={chatroom}/>)
+
     return ( 
         <div>
             ChatroomList
-            <ChatroomListItem/>
+            {list}
         </div>
      );
 }

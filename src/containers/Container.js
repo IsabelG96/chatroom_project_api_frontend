@@ -30,14 +30,14 @@ const Container = () => {
     useEffect(() => {
         fetchChatroomList();
         fetchUserList();
-        console.log(userList);
-        console.log(chatroomList);
+        // console.log(userList);
+        // console.log(chatroomList);
     }, [])
 
     return ( 
         <div>
             <User/>
-            <ChatroomList/>
+            <ChatroomList chatroom={chatroom} chatroomList={chatroomList}/>
             <Chatroom/>
         </div>
 

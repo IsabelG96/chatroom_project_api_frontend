@@ -1,7 +1,8 @@
-const ChatroomListItem = () => {
+const ChatroomListItem = ({chatroom}) => {
     return ( 
         <div>
-            ChatroomListItem
+            <h3>{chatroom.name}</h3>
+
         </div>
      );
 }
