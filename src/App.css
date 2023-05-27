@@ -11,34 +11,100 @@
 }
 .chatroom_container{
   grid-area: e;
+  height: 100%;
+  overflow-x: scroll;
+  border: none;
+  border-radius: 1em;
+  background-color: rgba(32, 94, 187, 0.207);
 }
 .send_message{
   grid-area: d;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  align-items: center;
+  /* display: grid;
+  justify-content: 4fr 1fr; */
 }
-
 
 .mainContainer{
   display: grid;
   grid-template:
-    "a b" 1fr
-    "c e" 5fr
+    "a navbar"
+    "c b" 5vh
+    "c e" 60vh
     "c d" 1fr / 1fr 4fr;
+  gap: 20px;
+  /* margin: 10px; */
+  /* height: 80vh; */
 
 }
 
 div{
   padding: 5px;
   border: 2px solid darkblue;
+  border-radius: 0.4em;
 }
 
-/* .chatroomColumn{
+#send-button{
+  background-color: rgb(32, 94, 187);
+  color: white;
+  font-weight: 800;
+  font-size: 1em;
+  border-radius: 0.4em;
+  padding: 20px;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+form > input {
+  font-size: 1em;
+  border-radius: 0.4em;
+  padding: 20px;
+  margin: 10px;
+  width: 500px;
+}
+
+
+.message-sent{
   display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
-} */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 5px 10px;
+  /* margin: 10px; */
+}
+
+
+.chatroom_container div{
+  border: none;
+}
+.message-sent div {
+  border-radius: 1.8em;
+  padding: 0 30px;
+}
+.blank-bit{
+  border: 1px solid transparent;
+}
+.response-bit{
+  background-color: rgb(123, 174, 250);
+  color: white;
+  border: 1px solid rgb(60, 136, 251);
+}
 
 
 
-
+.list-item{
+  border-radius: 1em;
+  margin: 10px
+}
+.list-item button {
+  border-radius: 1em;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  width: 100%;
+}
 
 /* .App {
   text-align: center;
