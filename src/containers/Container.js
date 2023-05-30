@@ -31,6 +31,7 @@ const Container = () => {
         const response = await fetch(`${SERVER_URL}/chatrooms`);
         const jsonData = await response.json();
         setChatroomList(jsonData);
+        setChatroom(jsonData[0])
     };
     const fetchUserList = async() => {
         const response = await fetch(`${SERVER_URL}/users`);
@@ -51,9 +52,9 @@ const Container = () => {
         setMessageHistory(jsonData);
         const response2 = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
         const jsonData2 = await response2.json();
-        console.log(jsonData2);
         setChatroom(jsonData2);
         fetchChatroomUsers(chatroomId);
+        addLoggedInUserToChatroom(user.id, chatroomId);
     }
 
 
@@ -72,7 +73,10 @@ const Container = () => {
     };
 
     const addLoggedInUserToChatroom = async (userId, chatroomId) => {
-        
+
+        if(checkIfAlreadyInRoom(userId, chatroomId)){
+            return;
+        }
         const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}/users/${userId}/add`, {
                 method: "PATCH",
                 headers: {"Content-type" : "application/json"},
@@ -80,13 +84,37 @@ const Container = () => {
         //change on the client side
         const response2 = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
         const jsonData2 = await response2.json();
-        console.log(jsonData2);
+        // console.log(jsonData2);
         setChatroom(jsonData2);
         const userResponse = await fetch(`${SERVER_URL}/users/${userId}`);
         const userDataUpdated = await userResponse.json();
         setUserList([...userList,userDataUpdated])
-        console.log(userList);
+        // console.log(userList);
     };
+
+    const checkIfAlreadyInRoom = (userId, chatroomId) => {
+
+            // fetch chatroomuserlist
+        // .some
+        // loop through every person (object) in the list
+        // if statement: if userId (passed in above) != person.id looping through at that time 
+        // if not the same as anything in the loop, push userId to chatroom userlist
+
+        // users.some(userIsThere) ? addLoggedInUserToChatroom(userId, chatroomId) : null;
+        console.log(userId);
+        console.log(chatroomUserList);
+        if (chatroomUserList.some((user)=>user.id!==userId)){
+            return false;
+        }
+        return true;
+
+        // for (let i=0; i<users.length;i++){
+        //     if(users.id!==userId){
+        //         addLoggedInUserToChatroom(userId, chatroomId);
+        //     }
+        // }
+
+    }
 
     // const getChatroomById = async(chatroomID) => {
     //     // send to db
@@ -124,8 +152,8 @@ const Container = () => {
             <ChatroomList 
                 chatroom={chatroom} 
                 chatroomList={chatroomList} 
-                fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom} 
-                addLoggedInUserToChatroom={addLoggedInUserToChatroom} 
+                fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom}  
+                addLoggedInUserToChatroom={addLoggedInUserToChatroom}
                 user={user}/>
             </div>
         </div>

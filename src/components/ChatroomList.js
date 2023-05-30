@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import ChatroomListItem from "./childcomponents/ChatroomListItem";
 
-const ChatroomList = ({chatroomList, fetchMessageHistoryForChatroom, addLoggedInUserToChatroom, user}) => {
+const ChatroomList = ({chatroomList, fetchMessageHistoryForChatroom, user, addLoggedInUserToChatroom}) => {
     
-    const list = chatroomList.map((chatroom) => <ChatroomListItem key={chatroom.id} chatroom={chatroom} fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom} addLoggedInUserToChatroom={addLoggedInUserToChatroom} user={user}/>)
+    const list = chatroomList.map((chatroom) => <ChatroomListItem key={chatroom.id} 
+    chatroom={chatroom} 
+    addLoggedInUserToChatroom={addLoggedInUserToChatroom}
+    fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom} 
+    user={user}/>)
 
     return ( 
         <>
