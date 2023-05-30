@@ -4,7 +4,7 @@ const SendMessage = ({message, chatroom, postMessage}) => {
     const [stateMessage, setStateMessage] = useState({
         message: "",
         time: null,
-        chatroomId: 1,
+        chatroomId: chatroom.id,
         userId: 1
     });
 
