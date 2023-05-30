@@ -58,7 +58,22 @@ const Container = () => {
         
     };
 
-    
+    const addLoggedInUserToChatroom = async (userId, chatroomId) => {
+        
+        const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}/users/${userId}/add`, {
+                method: "PATCH",
+                headers: {"Content-type" : "application/json"},
+        })
+        //change on the client side
+        const response2 = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
+        const jsonData2 = await response2.json();
+        console.log(jsonData2);
+        setChatroom(jsonData2);
+        const userResponse = await fetch(`${SERVER_URL}/users/${userId}`);
+        const userDataUpdated = await userResponse.json();
+        setUserList([...userList,userDataUpdated])
+        console.log(userList);
+    };
 
 
 
@@ -76,6 +91,7 @@ const Container = () => {
     useEffect(() => {
         fetchChatroomList();
         fetchUserList();
+        
         // fetchMessageHistory();
 
         // console.log(userList);
@@ -93,7 +109,7 @@ const Container = () => {
             </div>
             <Chatroom chatroom={chatroom} messageHistory={messageHistory} message={message} postMessage={postMessage}/>
             <div className="chatroomList_container">
-            <ChatroomList chatroom={chatroom} chatroomList={chatroomList} fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom}/>
+            <ChatroomList chatroom={chatroom} chatroomList={chatroomList} fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom} addLoggedInUserToChatroom={addLoggedInUserToChatroom}/>
             </div>
         </div>
 

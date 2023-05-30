@@ -5,7 +5,7 @@ const SendMessage = ({message, chatroom, postMessage}) => {
         message: "",
         time: null,
         chatroomId: chatroom.id,
-        userId: 2
+        userId: 1
     });
 
     useEffect(() => {

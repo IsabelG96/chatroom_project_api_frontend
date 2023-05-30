@@ -1,7 +1,8 @@
-const ChatroomListItem = ({chatroom, fetchMessageHistoryForChatroom}) => {
+const ChatroomListItem = ({chatroom, fetchMessageHistoryForChatroom, addLoggedInUserToChatroom}) => {
 
     const handleClick = (e) => {
         fetchMessageHistoryForChatroom(chatroom.id);
+        addLoggedInUserToChatroom(1, chatroom.id);
     }
 
     return ( 
