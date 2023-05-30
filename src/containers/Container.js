@@ -39,6 +39,7 @@ const Container = () => {
         setMessageHistory(jsonData);
         const response2 = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
         const jsonData2 = await response2.json();
+        console.log(jsonData2);
         setChatroom(jsonData2);
     }
 
@@ -56,6 +57,10 @@ const Container = () => {
         setMessageHistory([...messageHistory, savedMessage]);
         
     };
+
+    
+
+
 
     // const getChatroomById = async(chatroomID) => {
     //     // send to db
