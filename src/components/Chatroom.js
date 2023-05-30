@@ -10,8 +10,8 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
     return ( 
         <>
             <div className="chatroom_title">
-                <h2>Chatroom Name</h2>
-                {list}
+                <h2>{chatroom.name}</h2>
+                <div className="display_of_users">{list}</div>
                 {/* {chatroom ? userList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null} */}
             </div>
             <div className="chatroom_container">

@@ -22,15 +22,21 @@
 .mainContainer{
   display: grid;
   grid-template:
-    "a b" 1fr
-    "c e" 5fr
-    "c d" 1fr / 1fr 4fr;
+    "a b" 20vh
+    "c e" 60vh
+    "c d" 10vh / 1fr 4fr;
 
 }
 
 div{
   padding: 5px;
   border: 2px solid darkblue;
+}
+.display_of_users{
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-around;
+  overflow-x: scroll;
 }
 
 /* .chatroomColumn{
