@@ -27,10 +27,19 @@ const Container = () => {
         setUserList(jsonData);
     };
 
-    const fetchMessageHistory = async() => {
-        const response = await fetch(`${SERVER_URL}/messages/1`);
+    // const fetchMessageHistory = async() => {
+    //     const response = await fetch(`${SERVER_URL}/messages/1`);
+    //     const jsonData = await response.json();
+    //     setMessageHistory(jsonData);
+    // }
+
+    const fetchMessageHistoryForChatroom = async (chatroomId) => {
+        const response = await fetch(`${SERVER_URL}/messages/${chatroomId}`);
         const jsonData = await response.json();
         setMessageHistory(jsonData);
+        const response2 = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
+        const jsonData2 = await response2.json();
+        setChatroom(jsonData2);
     }
 
 
@@ -62,7 +71,7 @@ const Container = () => {
     useEffect(() => {
         fetchChatroomList();
         fetchUserList();
-        fetchMessageHistory();
+        // fetchMessageHistory();
 
         // console.log(userList);
         // console.log(chatroomList);
@@ -79,7 +88,7 @@ const Container = () => {
             </div>
             <Chatroom chatroom={chatroom} messageHistory={messageHistory} message={message} postMessage={postMessage}/>
             <div className="chatroomList_container">
-            <ChatroomList chatroom={chatroom} chatroomList={chatroomList}/>
+            <ChatroomList chatroom={chatroom} chatroomList={chatroomList} fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom}/>
             </div>
         </div>
 

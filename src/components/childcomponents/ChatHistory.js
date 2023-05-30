@@ -2,7 +2,7 @@ import MessageComponent from "./MessageComponent";
 
 const ChatHistory = ({messageHistory}) => {
 
-    const displayMessages = messageHistory.map((messageSent) => {
+    const displayMessages = messageHistory.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0)).map((messageSent) => {
         return <MessageComponent 
                     key={messageSent.id}
                     messageSent={messageSent}/>
@@ -10,7 +10,6 @@ const ChatHistory = ({messageHistory}) => {
 
     return ( 
         <div>
-            <h2>Chat History</h2>
             {displayMessages}
         </div>
      );

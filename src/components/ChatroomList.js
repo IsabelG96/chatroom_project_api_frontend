@@ -1,8 +1,8 @@
 import ChatroomListItem from "./childcomponents/ChatroomListItem";
 
-const ChatroomList = ({chatroomList}) => {
+const ChatroomList = ({chatroomList, fetchMessageHistoryForChatroom}) => {
     
-    const list = chatroomList.map((chatroom) => <ChatroomListItem key={chatroom.id} chatroom={chatroom}/>)
+    const list = chatroomList.map((chatroom) => <ChatroomListItem key={chatroom.id} chatroom={chatroom} fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom}/>)
 
     return ( 
         <>
