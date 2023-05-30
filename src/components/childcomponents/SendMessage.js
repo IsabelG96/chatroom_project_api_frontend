@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
-const SendMessage = ({message, chatroom, postMessage}) => {
+const SendMessage = ({message, chatroom, postMessage, user}) => {
 
     const [stateMessage, setStateMessage] = useState({
         message: "",
         time: null,
         chatroomId: chatroom.id,
-        userId: 1
+        userId: user.id
     });
 
     useEffect(() => {
         let copiedMessageObject = {...stateMessage};
         copiedMessageObject.chatroomId = chatroom.id;
+        copiedMessageObject.userId = user.id;
         setStateMessage(copiedMessageObject);
-    }, [chatroom])
+    }, [chatroom, user])
 
     const handleChange = (e) => {
         let messageName = e.target.name;

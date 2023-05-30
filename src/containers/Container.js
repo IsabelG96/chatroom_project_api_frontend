@@ -16,6 +16,17 @@ const Container = () => {
     const [message, setMessage] = useState("");
     const [messageHistory, setMessageHistory] = useState([]);
 
+    const [chatroomUserList, setChatroomUserList] = useState ([]);
+    
+    const fetchChatroomUsers = async(chatroomId) => {
+        const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
+        const jsonData = await response.json();
+        // const list = jsonData.map((chatroom) => chatroom.users);
+        const list = await jsonData.users;
+        setChatroomUserList(list);
+        console.log(chatroomUserList);
+    }
+
     const fetchChatroomList = async() => {
         const response = await fetch(`${SERVER_URL}/chatrooms`);
         const jsonData = await response.json();
@@ -25,6 +36,7 @@ const Container = () => {
         const response = await fetch(`${SERVER_URL}/users`);
         const jsonData = await response.json();
         setUserList(jsonData);
+        setUser(jsonData[0]);
     };
 
     // const fetchMessageHistory = async() => {
@@ -41,6 +53,7 @@ const Container = () => {
         const jsonData2 = await response2.json();
         console.log(jsonData2);
         setChatroom(jsonData2);
+        fetchChatroomUsers(chatroomId);
     }
 
 
@@ -75,8 +88,6 @@ const Container = () => {
         console.log(userList);
     };
 
-
-
     // const getChatroomById = async(chatroomID) => {
     //     // send to db
     //     const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomID}`);
@@ -85,31 +96,37 @@ const Container = () => {
     //     // send to cli
     // }
     
-
-   
-
     useEffect(() => {
         fetchChatroomList();
         fetchUserList();
-        
+    
         // fetchMessageHistory();
 
         // console.log(userList);
         // console.log(chatroomList);
     },[])
 
-
-
-    
     return ( 
         <div className="mainContainer">
             <div className="user_and_logo">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Chat_icon_new_message.svg/1200px-Chat_icon_new_message.svg.png" style={{width:"100px"}}/>
                 <User/>
             </div>
-            <Chatroom chatroom={chatroom} messageHistory={messageHistory} message={message} postMessage={postMessage}/>
+            <Chatroom 
+                chatroom={chatroom} 
+                messageHistory={messageHistory} 
+                message={message} 
+                postMessage={postMessage} 
+                user={user} 
+                chatroomUserList={chatroomUserList}/>
             <div className="chatroomList_container">
-            <ChatroomList chatroom={chatroom} chatroomList={chatroomList} fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom} addLoggedInUserToChatroom={addLoggedInUserToChatroom}/>
+            
+            <ChatroomList 
+                chatroom={chatroom} 
+                chatroomList={chatroomList} 
+                fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom} 
+                addLoggedInUserToChatroom={addLoggedInUserToChatroom} 
+                user={user}/>
             </div>
         </div>
 
@@ -117,5 +134,3 @@ const Container = () => {
 }
  
 export default Container;
-
-
