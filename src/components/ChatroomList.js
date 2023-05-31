@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ChatroomListItem from "./childcomponents/ChatroomListItem";
 
-const ChatroomList = ({chatroomList, fetchMessageHistoryForChatroom, user, addLoggedInUserToChatroom}) => {
+const ChatroomList = ({chatroomList, fetchMessageHistoryForChatroom, user, addLoggedInUserToChatroom, postNewChatroom}) => {
     
     const list = chatroomList.map((chatroom) => <ChatroomListItem key={chatroom.id} 
     chatroom={chatroom} 
@@ -9,9 +9,16 @@ const ChatroomList = ({chatroomList, fetchMessageHistoryForChatroom, user, addLo
     fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom} 
     user={user}/>)
 
+
+    const handleAddingNewChatroom = () => {
+        postNewChatroom();
+        console.log("button clicked");
+    }
+
     return ( 
         <>
-            <h2>ChatroomList</h2>
+            <h2>Chatrooms</h2>
+            <button onClick={handleAddingNewChatroom}>+</button>
             {list}
         </>
      );
