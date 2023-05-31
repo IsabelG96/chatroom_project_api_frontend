@@ -63,3 +63,15 @@ div{
 .timestamp{
   text-align: right;
 }
+
+.selected-chatroom{
+  background-color: rgb(91, 169, 225);
+}
+.unselected-chatroom{
+  background-color: grey;
+}
+.room-raided{
+  background-color: greenyellow;
+}
+
+
