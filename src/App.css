@@ -11,7 +11,7 @@
 }
 .chatroom_container{
   grid-area: e;
-  height: 550px;
+  /* height: 550px; */
   overflow-y: scroll;
 }
 .send_message{

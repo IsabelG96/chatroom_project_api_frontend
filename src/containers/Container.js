@@ -19,6 +19,8 @@ const Container = () => {
     const [newChatroomID, setNewChatroomID] = useState(null);
     const [newChatroomName, setNewChatroomName] = useState("");
 
+    const [notificationMessage, setNotificationMessage] = useState(false);
+
     // const [chatroomUserList, setChatroomUserList] = useState ([]);
     
     // const fetchChatroomUsers = async(chatroomId) => {
@@ -78,7 +80,7 @@ const Container = () => {
         // send to client-side
         const savedMessage = await response.json();
         setMessageHistory([...messageHistory, savedMessage]);
-        
+        setNotificationMessage(false);        
     };
 
     const addLoggedInUserToChatroom = async (userId, chatroomId) => {
@@ -98,6 +100,18 @@ const Container = () => {
         const userResponse = await fetch(`${SERVER_URL}/users/${userId}`);
         const userDataUpdated = await userResponse.json();
         setUserList([...userList,userDataUpdated])
+        // const raidedMessage = {message: "room raided successfully", time: null, chatroomId: chatroomId}
+        // setmessageHistory([...messageHistory, raidedMessage])
+        const response3 = await fetch(`${SERVER_URL}/messages`, {
+            method: "POST",
+            headers: {"Content-type" : "application/json"},
+            body : JSON.stringify({message: "room raided successfully >:)", time: null, userId: userId, chatroomId: chatroomId})
+        })
+        // send to client-side
+        const savedMessage = await response3.json();
+        setMessageHistory([...messageHistory, savedMessage]);
+        setNotificationMessage(true);
+        alert(`Room raided successfully by ${user.name}`)
     };
 
     // const getChatroomById = async(chatroomID) => {
@@ -177,7 +191,9 @@ const Container = () => {
                 postMessage={postMessage} 
                 user={user} 
                 chatroomUserList={chatroom.users}
-                postNewChatroomName={postNewChatroomName}/> : null}
+                postNewChatroomName={postNewChatroomName}
+                notificationMessage={notificationMessage}/> : null}
+                
             <div className="chatroomList_container">
             
             <ChatroomList 

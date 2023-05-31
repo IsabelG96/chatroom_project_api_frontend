@@ -2,7 +2,7 @@ import ChatHistory from "./childcomponents/ChatHistory";
 import SendMessage from "./childcomponents/SendMessage";
 import { useState } from "react";
 
-const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroomUserList, postNewChatroomName}) => {
+const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroomUserList, postNewChatroomName, notificationMessage}) => {
 
     const [currentlyEditing, setCurrentlyEditing] = useState(false);
     const [stateChatroomName, setStateChatroomName] = useState("");
@@ -42,7 +42,7 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
                 {/* {chatroom ? userList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null} */}
             </div>
             <div className="chatroom_container">
-                <ChatHistory messageHistory={messageHistory}/>
+                <ChatHistory messageHistory={messageHistory} notificationMessage={notificationMessage}/>
             </div>
             <div className="send_message">
                 <SendMessage chatroom={chatroom} message={message} postMessage={postMessage} user={user}/>
