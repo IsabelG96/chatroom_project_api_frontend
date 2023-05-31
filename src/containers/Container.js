@@ -141,9 +141,19 @@ const Container = () => {
             headers: {"Content-type" : "application/json"},
             body: JSON.stringify({name: chatroomName})
         })
-
-        setNewChatroomName(response);
-
+        // setNewChatroomName(response);
+        const data = await response.json();
+        console.log(data);
+        // update active chatroom
+        setChatroom(data);
+        // update the overall list of chatrooms
+        const updatedChatroomList = chatroomList.map((chatroom)=>{
+            if(chatroom.id === data.id){
+                return data;
+            }
+            return chatroom;
+        })
+        setChatroomList(updatedChatroomList);
     }
 
     // useEffect(() => {
