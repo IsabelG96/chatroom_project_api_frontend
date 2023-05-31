@@ -3,6 +3,7 @@ const ChatroomListItem = ({chatroom, fetchMessageHistoryForChatroom, user, addLo
     const handleClick = (e) => {
         fetchMessageHistoryForChatroom(chatroom.id);
         // addLoggedInUserToChatroom(user.id, chatroom.id)
+        
     }
 
     return ( 
