@@ -9,7 +9,9 @@ const MessageComponent = ({messageSent, notificationMessage}) => {
                     <div className="blank-bit"></div>
                     <div className="user-response">
                         <h5>{messageSent.user.name}</h5>
+                        <p className="message-text">
                         {messageSent.message}
+                        </p>
                         <h5 className="timestamp">{messageSent.time.substring(0, 5)}</h5>
                     </div>
                 </>
@@ -17,7 +19,9 @@ const MessageComponent = ({messageSent, notificationMessage}) => {
                 <>
                     <div className="other-response">
                         <h5>{messageSent.user.name}</h5>
+                        <p className="message-text">
                         {messageSent.message}
+                        </p>
                         <h5 className="timestamp">{messageSent.time.substring(0, 5)}</h5>
                     </div>
                     <div className="blank-bit"></div>

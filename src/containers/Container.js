@@ -96,6 +96,13 @@ const Container = () => {
         const response2 = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
         const jsonData2 = await response2.json();
         setChatroom(jsonData2);
+        const updatedChatroomList = chatroomList.map((chatroom)=>{
+            if(chatroom.id === jsonData2.id){
+                return jsonData2;
+            }
+            return chatroom;
+        })
+        setChatroomList(updatedChatroomList);
         const userResponse = await fetch(`${SERVER_URL}/users/${userId}`);
         const userDataUpdated = await userResponse.json();
         setUserList([...userList,userDataUpdated])
