@@ -69,7 +69,6 @@ const Container = () => {
     }, [chatroom])
 
 
-
     const postMessage = async (newMessage) => {
         // send to db
         const response = await fetch(`${SERVER_URL}/messages`, {

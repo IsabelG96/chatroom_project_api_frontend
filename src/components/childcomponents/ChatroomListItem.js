@@ -18,8 +18,15 @@ const ChatroomListItem = ({chatroom, chatroomObject, fetchMessageHistoryForChatr
         <div>
             <button
                 onClick={handleClick}
-                className={chatroom == null ? "unselected-chatroom" : chatroom.id == chatroomObject.id ? "selected-chatroom" : chatroomObject.users.some((userObject) => userObject.id === user.id) ? "room-raided" : "unselected-chatroom"}><h3>{chatroomObject.name}</h3></button>
-            {chatroomObject.users.some((userObject) => userObject.id === user.id) ? <p>room raided</p> : null}
+                className={chatroom == null || chatroomObject == null ? null 
+                            // : chatroom.id == chatroomObject.id ? "selected-chatroom" 
+                            : chatroomObject.users.some((userObject) => userObject.id === user.id) ? "room-raided" 
+                            : null}
+                id={chatroom == null || chatroomObject == null ? null : chatroom.id == chatroomObject.id ? "selected-chatroom-id" : null}>
+                <h3>{chatroomObject.name}</h3>
+                {/* {chatroomObject.users.some((userObject) => userObject.id === user.id) ? <p>room raided</p> : null} */}
+            </button>
+            
         </div>
      );
 }
