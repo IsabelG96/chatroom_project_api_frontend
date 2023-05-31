@@ -7,8 +7,8 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
     const [currentlyEditing, setCurrentlyEditing] = useState(false);
     const [stateChatroomName, setStateChatroomName] = useState("");
    
-    const userList = chatroom.users;
-    const list = chatroomUserList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>);
+    // const userList = chatroom.users;
+    const list = chatroomUserList ? chatroomUserList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null;
     // const list = chatroom ? userList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null;
     
     const changeCurrentlyEditingBoolean = () => {

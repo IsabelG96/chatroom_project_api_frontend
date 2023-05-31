@@ -102,16 +102,17 @@ const Container = () => {
         setUserList([...userList,userDataUpdated])
         // const raidedMessage = {message: "room raided successfully", time: null, chatroomId: chatroomId}
         // setmessageHistory([...messageHistory, raidedMessage])
-        const response3 = await fetch(`${SERVER_URL}/messages`, {
-            method: "POST",
-            headers: {"Content-type" : "application/json"},
-            body : JSON.stringify({message: "room raided successfully >:)", time: null, userId: userId, chatroomId: chatroomId})
-        })
+        // const response3 = await fetch(`${SERVER_URL}/messages`, {
+        //     method: "POST",
+        //     headers: {"Content-type" : "application/json"},
+        //     body : JSON.stringify({message: "room raided successfully >:)", time: null, userId: userId, chatroomId: chatroomId})
+        // })
         // send to client-side
-        const savedMessage = await response3.json();
-        setMessageHistory([...messageHistory, savedMessage]);
-        setNotificationMessage(true);
-        alert(`Room raided successfully by ${user.name}`)
+        // const savedMessage = await response3.json();
+        // setMessageHistory([...messageHistory, savedMessage]);
+        // setNotificationMessage(true);
+        if (chatroom.users.length != 0) {
+            alert(`Room raided successfully by ${user.name}`)};
     };
 
     // const getChatroomById = async(chatroomID) => {
@@ -145,7 +146,7 @@ const Container = () => {
 
 
         // add user to this new chatroom
-        addLoggedInUserToChatroom(user.id, newChatroomID);
+        // addLoggedInUserToChatroom(user.id, newChatroomID);
     }
 
     const postNewChatroomName = async (chatroomName, chatroomId) => {
