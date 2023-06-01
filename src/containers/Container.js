@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import Chatroom from "../components/Chatroom";
 import ChatroomList from "../components/ChatroomList";
 import User from "../components/User";
+// import logo from "../images/image0.png";
+// import logo from "../images/blackbubbles.png";
+// import logo from "../images/whitebubbles.png";
+import logo from "../images/roundededgeswhite.png";
 const SERVER_URL = 'http://localhost:8080';
 
 
@@ -188,8 +192,8 @@ const Container = () => {
     return ( 
         <div className="mainContainer">
             <div className="user_and_logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Chat_icon_new_message.svg/1200px-Chat_icon_new_message.svg.png" style={{width:"100px"}}/>
-                <User/>
+                <img src={logo} style={{height:"105%"}}/>
+                {/* <User/> */}
             </div>
             {chatroom ? <Chatroom 
                 chatroom={chatroom} 
@@ -199,7 +203,9 @@ const Container = () => {
                 user={user} 
                 chatroomUserList={chatroom.users}
                 postNewChatroomName={postNewChatroomName}
-                notificationMessage={notificationMessage}/> : null}
+                notificationMessage={notificationMessage}
+                /> 
+                : <h3 className={"chatroom_container_before"} >Hello {user.name}. Pick a chatroom.</h3>}
                 
             <div className="chatroomList_container">
             

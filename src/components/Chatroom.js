@@ -8,7 +8,7 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
     const [stateChatroomName, setStateChatroomName] = useState("");
    
     // const userList = chatroom.users;
-    const list = chatroomUserList ? chatroomUserList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null;
+    const list = chatroomUserList ? chatroomUserList.map((chatroomUser, index) => <div style={{borderRadius:"25px", width: "20%", textAlign: "center"}}><p key={index}>{chatroomUser.name}</p></div>) : null;
     // const list = chatroom ? userList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null;
     
     const changeCurrentlyEditingBoolean = () => {
@@ -36,19 +36,18 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
     return ( 
         <>
             <div className="chatroom_title">
-                <div>
+                <div style={{height: "50%"}}>
                     {currentlyEditing ?
-                    // <div style={{height: "50%"}} className="add-new-chatroom"> <form onSubmit={handleEditChatroomName}>
-                    //     <input type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
-                    //     <button style={{fontSize: "1.5em"}} type="submit">&#x2713;</button></form></div> 
-                    <form style={{height: "50%", padding: "9px 5px"}} className="add-new-chatroom" onSubmit={handleEditChatroomName}>
-                    <input type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
-                    <button style={{fontSize: "1.5em"}} type="submit">&#x2713;</button></form>
-                    
-                    :   <div style={{height: "50%", border: "none"}} className="add-new-chatroom"> 
-                            <h2>{chatroom.name}</h2>  
+                        <form style={{height: "100%", padding: "9px 5px"}} className="add-new-chatroom" onSubmit={handleEditChatroomName}>
+                            <input autoComplete="off" type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
+                            <button style={{fontSize: "1.5em"}} type="submit">&#x2713;</button>
+                        </form>
+                        :   
+                        <div style={{height: "100%", border: "none"}} className="add-new-chatroom"> 
+                            <h2 style={{alignSelf: "center"}}>{chatroom.name}</h2>  
                             <button style={{fontSize: "1.5em"}} type="button" onClick={changeCurrentlyEditingBoolean}>&#9998;</button> 
-                        </div>}
+                        </div>
+                    }
                 </div>
                 <div className="display_of_users">{list}</div>
                 {/* {chatroom ? userList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null} */}

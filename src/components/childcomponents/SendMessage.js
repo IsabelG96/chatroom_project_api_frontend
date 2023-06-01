@@ -33,7 +33,8 @@ const SendMessage = ({message, chatroom, postMessage, user}) => {
                 name="message" 
                 placeholder="type your message here"
                 value={stateMessage.message}
-                onChange={handleChange}/>
+                onChange={handleChange}
+                autoComplete="off"/>
                 <button type="submit">&crarr;</button>
             </form>
      );
