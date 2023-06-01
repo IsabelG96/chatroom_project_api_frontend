@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import Chatroom from "../components/Chatroom";
 import ChatroomList from "../components/ChatroomList";
-import User from "../components/User";
-// import logo from "../images/image0.png";
-// import logo from "../images/blackbubbles.png";
-// import logo from "../images/whitebubbles.png";
 import logo from "../images/roundededgeswhite.png";
 const SERVER_URL = 'http://localhost:8080';
 
@@ -25,22 +21,10 @@ const Container = () => {
 
     const [notificationMessage, setNotificationMessage] = useState(false);
 
-    // const [chatroomUserList, setChatroomUserList] = useState ([]);
-    
-    // const fetchChatroomUsers = async(chatroomId) => {
-    //     const response = await fetch(`${SERVER_URL}/chatrooms/${chatroomId}`);
-    //     const jsonData = await response.json();
-    //     // const list = jsonData.map((chatroom) => chatroom.users);
-    //     const list = await jsonData.users;
-    //     setChatroomUserList(list);
-    //     console.log(chatroomUserList);
-    // }
-
     const fetchChatroomList = async() => {
         const response = await fetch(`${SERVER_URL}/chatrooms`);
         const jsonData = await response.json();
         setChatroomList(jsonData);
-        // setChatroom(jsonData[0])
     };
     const fetchUserList = async() => {
         const response = await fetch(`${SERVER_URL}/users`);

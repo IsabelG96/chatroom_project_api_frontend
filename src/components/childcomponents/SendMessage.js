@@ -27,9 +27,15 @@ const SendMessage = ({message, chatroom, postMessage, user}) => {
         postMessage(stateMessage);
     }
 
+    useEffect(() => {
+        const messageToSend = document.getElementById("sending_message")
+        messageToSend.value = "";
+    }, [handleMessageSubmit])
+
     return ( 
             <form className="send-message-form" onSubmit={handleMessageSubmit}>
                 <input type="text" 
+                id="sending_message"
                 name="message" 
                 placeholder="type your message here"
                 value={stateMessage.message}

@@ -22,7 +22,7 @@ const ChatroomList = ({chatroom, chatroomList, fetchMessageHistoryForChatroom, u
                 <h2>Chatrooms</h2>
                 <button onClick={handleAddingNewChatroom}>+</button>
             </div>
-            <><br/><br/><br/>{list}</>
+            <><br/><br/><br/><br/>{list}</>
         </>
      );
 }

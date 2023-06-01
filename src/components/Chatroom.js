@@ -39,7 +39,8 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
                 <div style={{height: "50%"}}>
                     {currentlyEditing ?
                         <form style={{height: "100%", padding: "9px 5px"}} className="add-new-chatroom" onSubmit={handleEditChatroomName}>
-                            <input autoComplete="off" type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
+                            <input style={{alignSelf: "center"}}
+                            autoComplete="off" type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
                             <button style={{fontSize: "1.5em"}} type="submit">&#x2713;</button>
                         </form>
                         :   
