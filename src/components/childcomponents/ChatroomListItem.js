@@ -15,9 +15,11 @@ const ChatroomListItem = ({chatroom, chatroomObject, fetchMessageHistoryForChatr
         // chatroomObject.users.some((userObject) => userObject.id === user.id)) ? ""
 
     return ( 
-        <div>
+        <div className="room-button-div">
             <button
-                title="Raid!"
+                title={!chatroomObject.users ? null :  
+                    chatroomObject.users.some((userObject) => userObject.id === user.id) ? "Already raided" 
+                     : "Raid! >:)"}
                 onClick={handleClick}
                 className={!chatroomObject.users ? null :  
                     chatroomObject.users.some((userObject) => userObject.id === user.id) ? "room-raided" 
