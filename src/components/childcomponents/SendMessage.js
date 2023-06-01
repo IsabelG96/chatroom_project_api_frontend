@@ -28,16 +28,14 @@ const SendMessage = ({message, chatroom, postMessage, user}) => {
     }
 
     return ( 
-        <>
-            <form onSubmit={handleMessageSubmit}>
+            <form className="send-message-form" onSubmit={handleMessageSubmit}>
                 <input type="text" 
                 name="message" 
                 placeholder="type your message here"
                 value={stateMessage.message}
                 onChange={handleChange}/>
-                <button type="submit">Send</button>
+                <button type="submit">&crarr;</button>
             </form>
-        </>
      );
 }
  
