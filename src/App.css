@@ -8,11 +8,15 @@
 }
 .chatroomList_container{
   grid-area: c;
+  height: 100%;
+  overflow-y: scroll;
 }
 .chatroom_container{
   grid-area: e;
   /* height: 550px; */
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse; 
 }
 .send_message{
   grid-area: d;
@@ -97,7 +101,7 @@ div{
   border: 2.5px solid black;
   padding: 0px 20px;
   border-radius: 25px;
-  line-height: 0.2em;
+  line-height: 1.25em;
   justify-self: center;
   
 }

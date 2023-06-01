@@ -37,10 +37,15 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
         <>
             <div className="chatroom_title">
                 <div>
-                    {currentlyEditing ? <form className="add-new-chatroom" onSubmit={handleEditChatroomName}>
-                        <input type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
-                        <button type="submit">Submit</button></form> 
-                    :   <div className="add-new-chatroom"> 
+                    {currentlyEditing ?
+                    // <div style={{height: "50%"}} className="add-new-chatroom"> <form onSubmit={handleEditChatroomName}>
+                    //     <input type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
+                    //     <button style={{fontSize: "1.5em"}} type="submit">&#x2713;</button></form></div> 
+                    <form style={{height: "50%", padding: "9px 5px"}} className="add-new-chatroom" onSubmit={handleEditChatroomName}>
+                    <input type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
+                    <button style={{fontSize: "1.5em"}} type="submit">&#x2713;</button></form>
+                    
+                    :   <div style={{height: "50%", border: "none"}} className="add-new-chatroom"> 
                             <h2>{chatroom.name}</h2>  
                             <button style={{fontSize: "1.5em"}} type="button" onClick={changeCurrentlyEditingBoolean}>&#9998;</button> 
                         </div>}
