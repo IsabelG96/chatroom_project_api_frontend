@@ -36,8 +36,15 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
     return ( 
         <>
             <div className="chatroom_title">
-                {currentlyEditing ? <form onSubmit={handleEditChatroomName}><input type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> <button type="submit">Submit</button></form> : <h2>{chatroom.name}</h2>}
-                <button type="button" onClick={changeCurrentlyEditingBoolean}>Edit</button> 
+                <div>
+                    {currentlyEditing ? <form className="add-new-chatroom" onSubmit={handleEditChatroomName}>
+                        <input type="text" name="chatroomName" placeholder="new chatroom name" value={stateChatroomName} onChange={handleChange}/> 
+                        <button type="submit">Submit</button></form> 
+                    :   <div className="add-new-chatroom"> 
+                            <h2>{chatroom.name}</h2>  
+                            <button style={{fontSize: "1.5em"}} type="button" onClick={changeCurrentlyEditingBoolean}>&#9998;</button> 
+                        </div>}
+                </div>
                 <div className="display_of_users">{list}</div>
                 {/* {chatroom ? userList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null} */}
             </div>

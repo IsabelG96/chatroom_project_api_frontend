@@ -31,6 +31,7 @@ div{
   padding: 5px;
   border: 2px solid white;
 }
+
 .display_of_users{
   display: flex;
   /* flex-direction: row; */
@@ -103,5 +104,32 @@ div{
 
 .room-button-div button:hover{
   box-shadow: 0px 0px 10px 10px rgb(242, 61, 188);
+}
 
+.add-new-chatroom{
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 5px;
+}
+
+.add-new-chatroom button{
+  border: 2.5px solid black;
+  background-color: white;
+  border-radius: 50px;
+  /* padding: 5px 5px; */
+  height: 2.5em;
+  width: 2.5em;
+  align-self: center;
+  font-size: large;
+  font-weight: 800;
+}
+
+.add-new-chatroom button:hover{
+  box-shadow: 0px 0px 5px 5px greenyellow;
+  background-color: black;
+  color: white;
+}
+
+.edit-chatroom-name{
+  font-size: 10em;
 }
