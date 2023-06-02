@@ -211,8 +211,7 @@ const Container = () => {
                 postNewChatroomName={postNewChatroomName}
                 notificationMessage={notificationMessage}
                 /> 
-                // : user !== {} ? <><UserPopUp userList={userList} user={user} selectUser={selectUser} setUser={setUser}/><h3 className={"chatroom_container_before"} id="opening-message">Pick a Raider.</h3></>
-                : <><UserPopUp userList={userList} user={user} selectUser={selectUser}/><h3 className={"chatroom_container_before"} id="opening-message">Hello {user.name}. Pick a chatroom.</h3></>}
+                : <><UserPopUp className="chatroom_title_before" userList={userList} user={user} selectUser={selectUser}/><h3 className="chatroom_container_before" id="opening-message">Hello {user.name}. Pick a chatroom.</h3></>}
                 
             <div className="chatroomList_container">
             
