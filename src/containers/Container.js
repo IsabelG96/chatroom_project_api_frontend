@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Chatroom from "../components/Chatroom";
 import ChatroomList from "../components/ChatroomList";
 import logo from "../images/roundededgeswhite.png";
+import UserPopUp from "../popups/UserPopUp";
 const SERVER_URL = 'http://localhost:8080';
 
 
@@ -173,6 +174,27 @@ const Container = () => {
     //     })
 
     // }, [postNewChatroomName])
+
+    const selectUser = async (userId) => {
+        const response = await fetch(`${SERVER_URL}/users/${userId}`);
+        const jsonData = await response.json();
+        setUser(jsonData);
+    }
+
+    const postNewChatroomName2 = async (chatroomName) => {
+        const response = await fetch(`${SERVER_URL}/chatrooms`, {
+            method: "POST",
+            headers: {"Content-type" : "application/json"},
+            body : JSON.stringify({name: chatroomName})
+        });
+        // send to client-side
+        const savedChatroom = await response.json();
+        setChatroomList([...chatroomList, savedChatroom]);
+
+        // find id of chatroom
+        setNewChatroomID(chatroomList.length);
+    }
+
     return ( 
         <div className="mainContainer">
             <div className="user_and_logo">
@@ -189,7 +211,8 @@ const Container = () => {
                 postNewChatroomName={postNewChatroomName}
                 notificationMessage={notificationMessage}
                 /> 
-                : <h3 className={"chatroom_container_before"} >Hello {user.name}. Pick a chatroom.</h3>}
+                // : user !== {} ? <><UserPopUp userList={userList} user={user} selectUser={selectUser} setUser={setUser}/><h3 className={"chatroom_container_before"} id="opening-message">Pick a Raider.</h3></>
+                : <><UserPopUp userList={userList} user={user} selectUser={selectUser}/><h3 className={"chatroom_container_before"} id="opening-message">Hello {user.name}. Pick a chatroom.</h3></>}
                 
             <div className="chatroomList_container">
             
@@ -199,7 +222,8 @@ const Container = () => {
                 fetchMessageHistoryForChatroom={fetchMessageHistoryForChatroom}  
                 addLoggedInUserToChatroom={addLoggedInUserToChatroom}
                 user={user}
-                postNewChatroom={postNewChatroom}/>
+                // postNewChatroom={postNewChatroom}
+                postNewChatroomName2={postNewChatroomName2}/>
             </div>
         </div>
 

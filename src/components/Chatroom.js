@@ -54,7 +54,7 @@ const Chatroom = ({chatroom, messageHistory, message, postMessage, user, chatroo
                 {/* {chatroom ? userList.map((chatroomUser, index) => <p key={index}>{chatroomUser.name}</p>) : null} */}
             </div>
             <div className="chatroom_container">
-                <ChatHistory messageHistory={messageHistory} notificationMessage={notificationMessage}/>
+                <ChatHistory messageHistory={messageHistory} notificationMessage={notificationMessage} user={user}/>
             </div>
             <div className="send_message">
                 <SendMessage chatroom={chatroom} message={message} postMessage={postMessage} user={user}/>

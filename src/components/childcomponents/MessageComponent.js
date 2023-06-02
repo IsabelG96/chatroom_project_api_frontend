@@ -1,10 +1,10 @@
-const MessageComponent = ({messageSent, notificationMessage}) => {
+const MessageComponent = ({messageSent, notificationMessage, user}) => {
 
 
     return (
         
         <div className="message-sent">
-            {messageSent.user.id == 1 ? 
+            {messageSent.user.id == user.id ? 
                 <>
                     <div className="blank-bit"></div>
                     <div className="user-response">
